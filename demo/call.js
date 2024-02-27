@@ -1,5 +1,6 @@
 const libsys = require('..');
-const {rax, rdi, rsi} = require('ass-js/lib/x86/operand');
+const {rax, rdi, rsi} = require('ass-js');
+console.log(ass-js)
 const Code = require('ass-js/lib/x86/x64/code').Code;
 
 const isMac = process.platform === 'darwin';
