@@ -328,9 +328,7 @@ namespace libsys {
         void* addr = (void*) ArgToInt(args[0]);
         size_t size = (size_t) Nan::To<int32_t>(args[1]).FromJust();
 
-        std::unique_ptr<v8::BackingStore> backing = v8::ArrayBuffer::NewBackingStore(isolate, size);
-        Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, std::move(backing));
-
+        Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, addr, size);
         args.GetReturnValue().Set(buf);
     }
 
