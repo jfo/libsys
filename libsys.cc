@@ -331,7 +331,7 @@ namespace libsys {
         /* Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, addr, size); */
 
         std::unique_ptr<v8::BackingStore> backing = v8::ArrayBuffer::NewBackingStore(isolate, size);
-        Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, std::move(backing))
+        Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, std::move(backing));
 
         args.GetReturnValue().Set(buf);
     }
