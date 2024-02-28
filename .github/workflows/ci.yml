@@ -7,7 +7,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 16.0.0
+          node-version: 16.20.2
 
       - name: Check out repository code
         uses: actions/checkout@v4
