@@ -328,7 +328,11 @@ namespace libsys {
         void* addr = (void*) ArgToInt(args[0]);
         size_t size = (size_t) Nan::To<int32_t>(args[1]).FromJust();
 
-        Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, addr, size);
+        /* Local<ArrayBuffer> buf = ArrayBuffer::New(isolate, addr, size); */
+
+        std::unique_ptr<v8::BackingStore> backing = v8::ArrayBuffer::NewBackingStore(isolate, length);
+        buf = ArrayBuffer::New(isolate2, std::move(backing))
+
         args.GetReturnValue().Set(buf);
     }
 
@@ -505,7 +509,7 @@ namespace libsys {
     // void MethodJumper(const FunctionCallbackInfo<Value>& args) {
     //     Local<Function> function = Local<Function>::Cast(args[0]);
     //     Nan::Callback callback(function);
-    
+
     //     const unsigned argc = 0;
     //     Local<Value> argv[] = {};
 
